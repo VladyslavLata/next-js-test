@@ -1,5 +1,4 @@
 import { FC } from "react";
-// import { INav } from "../../types/types";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "./Navbar.module.scss";
@@ -11,9 +10,6 @@ const nav = [
   { id: "3", title: "Contacts", path: "/contacts" },
 ];
 
-// interface IProps {
-//   nav: INav[];
-// }
 
 export const Navbar: FC = () => {
   const { pathname } = useRouter();
