@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Navbar } from "../Navbar/Navbar";
-import appStyles from "../../styles/Home.module.scss";
+import appStyles from "../../styles/AppPages.module.scss";
 import styles from "./Header.module.scss";
 
 export const Header: FC = () => {
