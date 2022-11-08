@@ -2,6 +2,7 @@ import { FC } from "react";
 import { GetStaticProps } from "next";
 import { Container } from "../../components/Container/Container";
 import { Title } from "../../components/Title/Title";
+import { Section } from "../../components/Section/Section";
 import { IUser } from "../../types/types";
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -25,21 +26,21 @@ interface IProps {
 
 const Contacts: FC<IProps> = ({ users }) => {
   return (
-    <section>
+    <Section>
       <Container>
         <Title text="Contacts list" />
         <ul>
           {users.map(({ id, name, email }) => {
             return (
               <li key={id}>
-                <b>{name}</b>  
+                <b>{name}</b>
                 <span> ({email})</span>
               </li>
             );
           })}
         </ul>
       </Container>
-    </section>
+    </Section>
   );
 };
 
