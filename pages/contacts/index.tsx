@@ -1,19 +1,46 @@
 import { FC } from "react";
+import { GetStaticProps } from "next";
+import { Container } from "../../components/Container/Container";
+import { Title } from "../../components/Title/Title";
+import { IUser } from "../../types/types";
 
-const Contacts:FC = () => {
-  return (
-    <>
-      <h2>Contacts</h2>
-      <ul>
-        <li>
-          <p>Vlad</p>
-        </li>
-        <li>
-          <p>Den</p>
-        </li>
-      </ul>
-    </>
-  )
+export const getStaticProps: GetStaticProps = async () => {
+  const respons = await fetch("https://jsonplaceholder.typicode.com/users");
+  const users = await respons.json();
+
+  if (!users) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: { users },
+  };
+};
+
+interface IProps {
+  users: IUser[];
 }
+
+const Contacts: FC<IProps> = ({ users }) => {
+  return (
+    <section>
+      <Container>
+        <Title text="Contacts list" />
+        <ul>
+          {users.map(({ id, name, email }) => {
+            return (
+              <li key={id}>
+                <b>{name}</b>  
+                <span> ({email})</span>
+              </li>
+            );
+          })}
+        </ul>
+      </Container>
+    </section>
+  );
+};
 
 export default Contacts;
