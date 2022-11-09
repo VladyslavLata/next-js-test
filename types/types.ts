@@ -23,3 +23,9 @@ export interface IUser {
   email: string;
   address: IUserAddress;
 }
+
+export interface IPost {
+  id: number,
+  title: string,
+  body: string,
+}

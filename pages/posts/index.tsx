@@ -1,15 +1,43 @@
 import { FC } from "react";
+import Link from "next/link";
+import { IPost } from "../../types/types";
+import { Title } from "../../components/Title/Title";
+import { Section } from "../../components/Section/Section";
+import { Container } from "../../components/Container/Container";
 
-const Posts:FC = () => {
+export const getStaticProps = async () => {
+  const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const posts = await response.json();
+
+  if (!posts) {
+    return {
+      notFound: true
+    }
+  }
+
+  return {
+    props: {
+      posts
+    }
+  }
+}
+
+interface IProps {
+  posts: IPost[]
+}
+
+const Posts:FC<IProps> = ({posts}) => {
   return (
-    <>
-      <h1>Posts</h1>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita,
-        nobis ad? Cupiditate accusantium numquam dolorem dolore tempora dicta
-        fugit eius!
-      </p>
-    </>
+    <Section>
+      <Container>
+        <Title text="Posts list" />
+        <ul>
+          {posts.map(({ id, title }) => {
+            return (<li key={id}><Link href={`/posts/${id}`}>{title}</Link></li>)
+          })}
+        </ul>
+      </Container>
+  </Section>
   );
 };
 
