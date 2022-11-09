@@ -1,9 +1,11 @@
 import { FC } from "react";
 import { GetStaticProps } from "next";
+import Link from "next/link";
 import { Container } from "../../components/Container/Container";
 import { Title } from "../../components/Title/Title";
 import { Section } from "../../components/Section/Section";
 import { IUser } from "../../types/types";
+
 
 export const getStaticProps: GetStaticProps = async () => {
   const respons = await fetch("https://jsonplaceholder.typicode.com/users");
@@ -30,11 +32,10 @@ const Contacts: FC<IProps> = ({ users }) => {
       <Container>
         <Title text="Contacts list" />
         <ul>
-          {users.map(({ id, name, email }) => {
+          {users.map(({ id, name }) => {
             return (
               <li key={id}>
-                <b>{name}</b>
-                <span> ({email})</span>
+                <Link href={`/contacts/${id}`}>{name}</Link>
               </li>
             );
           })}
