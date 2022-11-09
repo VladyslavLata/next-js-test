@@ -28,7 +28,7 @@ export const Navbar: FC = () => {
               <Link
                 href={path}
                 className={
-                  pathname === path
+                  pathname === path || pathname.includes(title.toLowerCase())
                     ? `${styles.link} ${styles.active}`
                     : styles.link
                 }
