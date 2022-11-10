@@ -1,15 +1,8 @@
 import React from "react";
-import { Interface } from "readline";
 
 export interface IChildren {
   children: React.ReactNode;
 }
-
-// export interface INav {
-//   id: string;
-//   title: string;
-//   path: string;
-// }
 
 interface IUserAddress {
   street: string;
