@@ -1,17 +1,26 @@
 import { ListGridTest } from "../components/ListGridTest/ListGrid";
 import { Container } from "../components/Container/Container";
 import { Section } from "../components/Section/Section";
-import  svg  from "../public/svg.svg";
-// import Image from "next/image";
+import Image from "next/image";
+import dd from "../public/sprite.svg";
+
+
+
+const Icon = () => {
+  return (<svg width="30px" height="30px"  fill="#345678" >
+
+    <use href="../public/sprite.svg#icon" />
+
+  </svg>)
+}
 
 const TestGrid = () => {
   return (
     <Section>
       <Container>
         <ListGridTest />
-        <svg width={30} height={30}>
-          <use href={svg+"#icon-mob-menu-close"}></use>
-        </svg>
+        <Image src={dd} width={77} height={30} alt="d"/>
+        <Icon />
       </Container>
     </Section>
   );
