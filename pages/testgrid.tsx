@@ -9,7 +9,9 @@ import dd from "../public/sprite.svg";
 const Icon = () => {
   return (<svg width="30px" height="30px"  fill="#345678" >
 
-    <use href="../public/sprite.svg#icon" />
+    <use style={{
+      width: "40px",
+    height: "40px",}} href="../public/sprite.svg#icon" />
 
   </svg>)
 }
@@ -19,7 +21,7 @@ const TestGrid = () => {
     <Section>
       <Container>
         <ListGridTest />
-        <Image src={dd} width={77} height={30} alt="d"/>
+        {/* <Image src={dd} width={77} height={30} alt="d"/> */}
         <Icon />
       </Container>
     </Section>
